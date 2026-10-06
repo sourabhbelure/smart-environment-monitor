@@ -1,24 +1,21 @@
-#include<stdio.h>
-int main(void){
-int temperature = 27;
-int humidity =62;
+#include <stdio.h>
+#include "../include/sensor_processing.h"
 
-printf("==== smart Environmental Monitor ====\n\n");
-printf("Temperature : %d C\n",temperature);
-printf("Humidity: %d %%\n\n",humidity);
-printf("Temperature Status: NORMAL\n");
-printf("Humidity Status: NORMAL\n");
-printf("overall Status: NORMAL\n");
+int main(void) {
+    int temperatures[5] = {23, 45, 2, 67, 75};
+    int size = 5;
 
-temperature=38;
-humidity=75;
+    printf("===== SENSOR MONITOR REPORT =====\n");
+    for (int i = 0; i < size; i++) {
+        checkTemperature(temperatures[i]);
+}
+    printf("---------------------------------\n");
+    
+    // Calling functions from your module
+    printf("Maximum Temperature: %d C\n", findMaximum(temperatures, size));
+    printf("Minimum Temperature: %d C\n", findMinimum(temperatures, size));
+    printf("Average Temperature: %.1f C\n", calculateAverage(temperatures, size));
+    printf("=================================\n");
 
-printf("==== smart Environmental Monitor ====\n\n");
-printf("Temperature : %d C\n",temperature);
-printf("Humidity: %d %%\n\n",humidity);
-printf("Temperature Status: WARNING\n");
-printf("Humidity Status: NORMAL\n");
-printf("overall Status: WARNING\n");
-
-return 0;
+    return 0;
 }
