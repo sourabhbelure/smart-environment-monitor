@@ -19,5 +19,10 @@ int main()
         printSensorData(&readings[i]); // Pass the address of the current array slot
         printf("\n");
     }
+
+printf("-------------------------\n");
+    printf("Average Temperature: %.2f C\n", calculateAverageTemperature(readings, 5));
+    printf("Highest Temperature: %.2f C\n", findHighestTemperature(readings, 5));
+    printf("Lowest Temperature: %.2f C\n", findLowestTemperature(readings, 5));
 return 0;
 }
