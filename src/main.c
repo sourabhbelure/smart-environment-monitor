@@ -1,40 +1,23 @@
 #include <stdio.h>
 #include "sensor_data.h"
+#include "sensor_processing.h"
 
 int main()
 {
     SensorData readings[5];
+    updateSensorData(&readings[0], 27.5, 60.0, 95);
+    updateSensorData(&readings[1], 28.0, 62.0, 94);
+    updateSensorData(&readings[2], 29.2, 64.0, 93);
+    updateSensorData(&readings[3], 30.1, 66.0, 92);
+    updateSensorData(&readings[4], 29.5, 65.0, 91);
 
-    readings[0].temperature = 27.5;
-    readings[0].humidity = 60;
-    readings[0].battery = 95;
+   printf("SMART ENVIRONMENT MONITOR\n");
+   printf("=========================\n\n");
 
-    readings[1].temperature = 28.0;
-    readings[1].humidity = 62;
-    readings[1].battery = 94;
-
-    readings[2].temperature = 29.2;
-    readings[2].humidity = 64;
-    readings[2].battery = 93;
-
-    readings[3].temperature = 30.1;
-    readings[3].humidity = 66;
-    readings[3].battery = 92;
-
-    readings[4].temperature = 29.5;
-    readings[4].humidity = 65;
-    readings[4].battery = 91;
-    printf("Environmental Sensor Data\n");
-
-    for (int i=0;i<5;i++){
-    printf("READING %d --->",i+1);
-    printf("Temperature: %.2f C\n", readings[i].temperature);
-    printf("Humidity: %.2f %%\n", readings[i].humidity);
-    printf("Battery: %d %%\n", readings[i].battery);
+   for (int i = 0; i < 5; i++) {
+        printf("Reading %d\n", i + 1);
+        printSensorData(&readings[i]); // Pass the address of the current array slot
+        printf("\n");
     }
-    float avg=readings[0].temperature;
-    for (int j=1;j<5;j++)
-    avg+=readings[j].temperature;
-printf("AVERAGE TEMPERATURE IS : %.2f",avg/5.00);
-    return 0;
+return 0;
 }

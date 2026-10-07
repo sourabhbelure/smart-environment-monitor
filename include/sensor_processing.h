@@ -1,9 +1,11 @@
 #ifndef SENSOR_PROCESSING_H
 #define SENSOR_PROCESSING_H
 
-int findMaximum(int temp[],int size);
-int findMinimum(int temp[],int size);
-float calculateAverage(int temp[],int size);
-void checkTemperature(int temp);
+// We must include this so the compiler knows what 'SensorData' is
+#include "sensor_data.h"
+
+// Function prototypes for pointer-based structure manipulation
+void updateSensorData(SensorData *sensor, float temperature, float humidity, int battery);
+void printSensorData(const SensorData *sensor);
 
 #endif
